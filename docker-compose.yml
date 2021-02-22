@@ -1,0 +1,11 @@
+version: "3"
+services: 
+  node_dev_env:
+    image: node:latest
+    working_dir: /home/app
+    entrypoint: /bin/bash
+    container_name: node-docker
+    ports: 
+      - 3000:3000
+    volumes: 
+      - ./:/home/app
