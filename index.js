@@ -11,7 +11,7 @@ const app = express()
 app.use(cors()) // use cors in app 
 app.use(express.json()) // get only body of request from client side
 
-// process data ---------------------------------------------------------------
+// helper function: to combine and get unique posts ------------------------------
 function combineAndUnique(cache, queryTagsArray) {
 
     const fullCacheDeepClone = JSON.parse(JSON.stringify(cache))
@@ -27,7 +27,7 @@ function combineAndUnique(cache, queryTagsArray) {
         let finalPostsArray = []
 
         for (const queryTag of queryTagsArray) {
-            console.log('LOG 0: ', queryTag, fullCacheDeepClone[queryTag].length)
+            // console.log('LOG 0: ', queryTag, fullCacheDeepClone[queryTag].length)
 
             mergedPostArrays = mergedPostArrays.concat(fullCacheDeepClone[queryTag])
 
@@ -39,17 +39,34 @@ function combineAndUnique(cache, queryTagsArray) {
             }
         }
 
-        console.log('LOG 0: ', postTagComboSet.size, mergedPostArrays.length)
+        // console.log('LOG 0: ', postTagComboSet.size, mergedPostArrays.length)
 
         for (const postID of postTagComboSet) {
-            
+
             uniquePost = mergedPostArrays.filter(post => post.id === postID)[0]
             finalPostsArray.push(uniquePost)
 
         }
-        console.log(finalPostsArray.length)
+        // console.log(finalPostsArray.length)
         return finalPostsArray
     }
+
+}
+
+// helper function: check if sortBy parameter is valid ---------------------------
+function isSortByValid(sortByParam) {
+    if (sortByParam === 'id' || sortByParam === 'reads' || sortByParam === 'likes' || sortByParam === 'popularity') {
+        return true
+    }
+    return false
+}
+
+// helper function: check if direction parameter is valid ----------------------
+function isDirectionValid(directionParam) {
+    if (directionParam === 'asc' || directionParam === 'desc') {
+        return true
+    }
+    return false
 
 }
 
@@ -82,12 +99,10 @@ app.get('/api/posts', async (req, res) => {
 
         // tags query check
         if (!req.query.tags) {
-            res.status(500)
+            res.status(400)
             res.send({ error: 'Tags parameter is required' })
         } else {
             queryItems = req.query
-            console.log('LOG 1: ', queryItems)
-
 
             // cache tag API data
             const queryTagsArray = req.query.tags.split(',')
@@ -96,29 +111,22 @@ app.get('/api/posts', async (req, res) => {
 
                 if (!cache[queryTag]) {
 
-                    console.log('No Cache found! - Creating cache entry for given tag query.')
-
                     await fetch(`https://api.hatchways.io/assessment/blog/posts?tag=${queryTag}`)
                         .then(response => response.json())
                         .then(payload => {
                             cache[queryTag] = payload.posts
                         })
-                } else {
-
-                    console.log('Query found in cache! - Using that for further processing.')
 
                 }
+
             }
 
-            // console.log(cache)
 
-            // sort by phase 
+            // sort-by phase ------------------------------------
 
             const sortByParam = req.query.sortBy
-            console.log(sortByParam)
-
             const direction = req.query.direction
-            console.log(direction)
+
 
             if (!sortByParam && !direction) {
 
@@ -128,19 +136,49 @@ app.get('/api/posts', async (req, res) => {
 
             } else if (!sortByParam && direction) {
 
+                res.status(400)
+                res.send({ error: 'sortBy parameter is needed if direction is specified' })
+
             } else if (sortByParam && !direction) {
+
+                if (!isSortByValid(sortByParam)) {
+                    res.status(400)
+                    res.send({ error: 'sortBy parameter is invalid' })
+                } else {
+                    const finalPostsArray = combineAndUnique(cache, queryTagsArray)
+                    finalPostsArray.sort((postA, postB) => postA[sortByParam] - postB[sortByParam])
+                    res.send({ posts: finalPostsArray })
+
+                }
 
             } else if (sortByParam && direction) {
 
+                if (!isDirectionValid(direction)) {
+                    res.status(400)
+                    res.send({ error: 'direction parameter is invalid' })
+                } else if (!isSortByValid(sortByParam)) {
+                    res.status(400)
+                    res.send({ error: 'sortBy parameter is invalid' })
+                } else {
+                    const finalPostsArray = combineAndUnique(cache, queryTagsArray)
+
+                    if (direction === 'asc') {
+                        finalPostsArray.sort((postA, postB) => postA[sortByParam] - postB[sortByParam])
+
+                    } else if (direction === 'desc') {
+
+                        finalPostsArray.sort((postA, postB) => postB[sortByParam] - postA[sortByParam])
+                    }
+
+                    res.send({ posts: finalPostsArray })
+                }
+
             } else {
-                res.send({ info: 'End-point under construction!' })
+                res.status(400)
+                res.send({ error: 'Unsupported request!' })
             }
 
-
-
-
         }
-
 
 
     } catch (error) {
