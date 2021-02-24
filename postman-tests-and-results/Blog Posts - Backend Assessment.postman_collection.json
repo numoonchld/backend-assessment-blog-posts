@@ -7,6 +7,19 @@
 	"item": [
 		{
 			"name": "https://api.hatchways.io/assessment/blog/posts?tag=tech",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"API call test\", function() {",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -36,6 +49,19 @@
 		},
 		{
 			"name": "https://api.hatchways.io/assessment/blog/posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"API call params test - 1\", function() {",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -58,6 +84,19 @@
 		},
 		{
 			"name": "https://api.hatchways.io/assessment/blog/posts?",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"API call params test - 2\", function() {",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -86,6 +125,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ping test\", function() {",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -106,6 +158,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Error Test for no tags\", function() {",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -126,6 +191,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('One Tags Parameter', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -152,6 +230,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Two Tags Parameter', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -178,6 +269,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health,politics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Three Tags Parameter', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -204,6 +308,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&direction=asc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Only direction without sortBy', function(){",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -234,6 +351,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=reads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('sortBy Parameter along with tags', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -264,6 +394,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Bad sortBy parameter', function(){",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -294,6 +437,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Another sortBy parameter', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -324,6 +480,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=reads&direction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Valid sortBy and direction Parameters', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -358,6 +527,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=likes&direction=asc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Valid sortBy and direction Parameters', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -392,6 +574,19 @@
 		},
 		{
 			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id&direction=test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('invalid direction parameter', function(){",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],

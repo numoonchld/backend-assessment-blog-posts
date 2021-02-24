@@ -1,0 +1,483 @@
+{
+	"id": "4fa39c6c-b462-452b-bdd7-59798e59f703",
+	"name": "Blog Posts - Backend Assessment",
+	"timestamp": "2021-02-24T02:28:31.266Z",
+	"collection_id": "5d1951b2-8337-44bf-b684-5e110aa60bbc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 15,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e631efc5-b939-4101-8c88-7a347d2faf8a",
+			"name": "https://api.hatchways.io/assessment/blog/posts?tag=tech",
+			"url": "https://api.hatchways.io/assessment/blog/posts?tag=tech",
+			"time": 446,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"API call test": true
+			},
+			"testPassFailCounts": {
+				"API call test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				446
+			],
+			"allTests": [
+				{
+					"API call test": true
+				}
+			]
+		},
+		{
+			"id": "8f0113e8-2deb-4f51-ba2c-c5d6fad45c61",
+			"name": "https://api.hatchways.io/assessment/blog/posts",
+			"url": "https://api.hatchways.io/assessment/blog/posts",
+			"time": 314,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"API call params test - 1": true
+			},
+			"testPassFailCounts": {
+				"API call params test - 1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				314
+			],
+			"allTests": [
+				{
+					"API call params test - 1": true
+				}
+			]
+		},
+		{
+			"id": "3377d172-93dd-473b-a406-fe2f0f676ce6",
+			"name": "https://api.hatchways.io/assessment/blog/posts?",
+			"url": "https://api.hatchways.io/assessment/blog/posts?",
+			"time": 421,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"API call params test - 2": true
+			},
+			"testPassFailCounts": {
+				"API call params test - 2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				421
+			],
+			"allTests": [
+				{
+					"API call params test - 2": true
+				}
+			]
+		},
+		{
+			"id": "9fcb2ee3-8536-49c4-a3d7-8a99fbb58ffa",
+			"name": "http://localhost:3000/api/ping",
+			"url": "http://localhost:3000/api/ping",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Ping test": true
+			},
+			"testPassFailCounts": {
+				"Ping test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Ping test": true
+				}
+			]
+		},
+		{
+			"id": "e2d97aa5-e89c-41c6-893a-ec9cd8ffc213",
+			"name": "http://localhost:3000/api/posts",
+			"url": "http://localhost:3000/api/posts",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Error Test for no tags": true
+			},
+			"testPassFailCounts": {
+				"Error Test for no tags": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Error Test for no tags": true
+				}
+			]
+		},
+		{
+			"id": "2656b0a5-42de-45f1-b8fb-c5ac4f44fc7d",
+			"name": "http://localhost:3000/api/posts?tags=tech",
+			"url": "http://localhost:3000/api/posts?tags=tech",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"One Tags Parameter": true
+			},
+			"testPassFailCounts": {
+				"One Tags Parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"One Tags Parameter": true
+				}
+			]
+		},
+		{
+			"id": "43edd3ea-d399-400c-8e92-7a1ae6d8a466",
+			"name": "http://localhost:3000/api/posts?tags=tech,health",
+			"url": "http://localhost:3000/api/posts?tags=tech,health",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Two Tags Parameter": true
+			},
+			"testPassFailCounts": {
+				"Two Tags Parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Two Tags Parameter": true
+				}
+			]
+		},
+		{
+			"id": "8d3f9112-1e23-476a-84e9-8fd0ce042dca",
+			"name": "http://localhost:3000/api/posts?tags=tech,health,politics",
+			"url": "http://localhost:3000/api/posts?tags=tech,health,politics",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Three Tags Parameter": true
+			},
+			"testPassFailCounts": {
+				"Three Tags Parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Three Tags Parameter": true
+				}
+			]
+		},
+		{
+			"id": "a1e5783e-e22f-4fdb-9866-8dff54a2a57b",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&direction=asc",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&direction=asc",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Only direction without sortBy": true
+			},
+			"testPassFailCounts": {
+				"Only direction without sortBy": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Only direction without sortBy": true
+				}
+			]
+		},
+		{
+			"id": "0dd57ecb-14af-45dd-89bc-9890fd4a8e95",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=reads",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=reads",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"sortBy Parameter along with tags": true
+			},
+			"testPassFailCounts": {
+				"sortBy Parameter along with tags": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"sortBy Parameter along with tags": true
+				}
+			]
+		},
+		{
+			"id": "32965052-5094-401d-9437-99f59289d76c",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=author",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=author",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Bad sortBy parameter": true
+			},
+			"testPassFailCounts": {
+				"Bad sortBy parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Bad sortBy parameter": true
+				}
+			]
+		},
+		{
+			"id": "97a6632a-63a3-467b-a53b-33c62a14d053",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Another sortBy parameter": true
+			},
+			"testPassFailCounts": {
+				"Another sortBy parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Another sortBy parameter": true
+				}
+			]
+		},
+		{
+			"id": "bd2409c2-af9e-4704-9dfa-aa58acd46888",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=reads&direction",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id&direction=desc",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Valid sortBy and direction Parameters": true
+			},
+			"testPassFailCounts": {
+				"Valid sortBy and direction Parameters": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Valid sortBy and direction Parameters": true
+				}
+			]
+		},
+		{
+			"id": "e278781b-ad02-4c69-9b13-c41264dfdff2",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=likes&direction=asc",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=likes&direction=asc",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Valid sortBy and direction Parameters": true
+			},
+			"testPassFailCounts": {
+				"Valid sortBy and direction Parameters": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Valid sortBy and direction Parameters": true
+				}
+			]
+		},
+		{
+			"id": "f0fd8ca1-375a-4165-987d-ede1dc42f3de",
+			"name": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id&direction=test",
+			"url": "http://localhost:3000/api/posts?tags=tech,health&sortBy=id&direction=test",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"invalid direction parameter": true
+			},
+			"testPassFailCounts": {
+				"invalid direction parameter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"invalid direction parameter": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1278,
+	"collection": {
+		"requests": [
+			{
+				"id": "e631efc5-b939-4101-8c88-7a347d2faf8a",
+				"method": "GET"
+			},
+			{
+				"id": "8f0113e8-2deb-4f51-ba2c-c5d6fad45c61",
+				"method": "GET"
+			},
+			{
+				"id": "3377d172-93dd-473b-a406-fe2f0f676ce6",
+				"method": "GET"
+			},
+			{
+				"id": "9fcb2ee3-8536-49c4-a3d7-8a99fbb58ffa",
+				"method": "GET"
+			},
+			{
+				"id": "e2d97aa5-e89c-41c6-893a-ec9cd8ffc213",
+				"method": "GET"
+			},
+			{
+				"id": "2656b0a5-42de-45f1-b8fb-c5ac4f44fc7d",
+				"method": "GET"
+			},
+			{
+				"id": "43edd3ea-d399-400c-8e92-7a1ae6d8a466",
+				"method": "GET"
+			},
+			{
+				"id": "8d3f9112-1e23-476a-84e9-8fd0ce042dca",
+				"method": "GET"
+			},
+			{
+				"id": "a1e5783e-e22f-4fdb-9866-8dff54a2a57b",
+				"method": "GET"
+			},
+			{
+				"id": "0dd57ecb-14af-45dd-89bc-9890fd4a8e95",
+				"method": "GET"
+			},
+			{
+				"id": "32965052-5094-401d-9437-99f59289d76c",
+				"method": "GET"
+			},
+			{
+				"id": "97a6632a-63a3-467b-a53b-33c62a14d053",
+				"method": "GET"
+			},
+			{
+				"id": "bd2409c2-af9e-4704-9dfa-aa58acd46888",
+				"method": "GET"
+			},
+			{
+				"id": "e278781b-ad02-4c69-9b13-c41264dfdff2",
+				"method": "GET"
+			},
+			{
+				"id": "f0fd8ca1-375a-4165-987d-ede1dc42f3de",
+				"method": "GET"
+			}
+		]
+	}
+}
